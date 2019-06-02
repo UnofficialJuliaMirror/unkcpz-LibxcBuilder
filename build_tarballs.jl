@@ -17,7 +17,7 @@ script = raw"""
 cd $WORKSPACE/srcdir
 cd libxc-4.3.4/
 autoreconf -i
-./configure --prefix=$prefix --host=$target --enable-shared 
+./configure --prefix=$prefix --host=$target --enable-shared
 make
 make install
 
@@ -33,16 +33,15 @@ platforms = [
 
 # The products that we will ensure are always built
 products(prefix) = [
-    ExecutableProduct(prefix, "xc-threshold", :threshold),
+    ExecutableProduct(prefix, "xc-threshold", :xcthreshold),
     LibraryProduct(prefix, "libxc", :libxc),
-    ExecutableProduct(prefix, "xc-info", :info)
+    ExecutableProduct(prefix, "xc-info", :xcinfo)
 ]
 
 # Dependencies that must be installed before this package can be built
 dependencies = [
-    
+
 ]
 
 # Build the tarballs, and possibly a `build.jl` as well.
 build_tarballs(ARGS, name, version, sources, script, platforms, products, dependencies)
-
