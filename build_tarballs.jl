@@ -19,7 +19,7 @@ cd libxc-4.3.4/
 autoreconf -i
 ./configure --prefix=$prefix --host=$target --enable-shared
 make
-make install
+make install VERBOSE=1
 
 """
 
@@ -28,7 +28,9 @@ make install
 platforms = [
     MacOS(:x86_64),
     Linux(:x86_64, libc=:glibc),
-    Linux(:i686, libc=:glibc)
+    Linux(:i686, libc=:glibc),
+    # Windows(:i686),
+    # Windows(:x86_64),
 ]
 
 # The products that we will ensure are always built
